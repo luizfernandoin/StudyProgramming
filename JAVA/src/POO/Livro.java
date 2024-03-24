@@ -8,6 +8,15 @@ public class Livro {
     double valor;
     Autor autor;
 
+    /*
+    Construtor é um método invocado quando o objeto é instanciado. Ele possui o mesmo nome
+    da classe e não tem retorno declarado.
+
+    Obs: se você não criar o compilador resolvera esse problema automaticamente.
+    */
+    public Livro() {
+        System.out.println("Novo livro criado!");
+    }
 
 
     /*
@@ -27,8 +36,13 @@ public class Livro {
         }
     }
 
-    public void aplicaDescontoDe(double porcentagem) {
-        valor -= valor * porcentagem;
+    public boolean aplicaDescontoDe(double porcentagem) {
+        if (porcentagem > 0.3) {
+            return false;
+        }
+
+        this.valor -= this.valor * porcentagem;
+        return true;
     }
 
     boolean temAutor() {
