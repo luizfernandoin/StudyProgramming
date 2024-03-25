@@ -2,13 +2,13 @@ package POO;
 
 public class Main {
     public static void main(String[] args) {
-        Livro livro1 = new Livro();
-        Livro livro2 = new Livro();
-
         Autor autor = new Autor();
         autor.setNome("Luiz Fernando");
         autor.setEmail("luizfernandoinfo100@gmail.com");
         autor.setCpf("111.111.111-11");
+
+        Livro livro1 = new Livro(autor);
+        Livro livro2 = new Livro(autor);
 
         Autor autor1 = new Autor();
         autor1.setNome("Luiz Fernando");
@@ -20,7 +20,7 @@ public class Main {
         livro1.setDescricao("Descrição1");
         livro1.setNumPaginas(1);
         livro1.setValor(01.01);
-        livro1.setIsbn("1");
+
         livro1.autor = autor;
 
         livro2.setTitulo("Titulo2");
@@ -55,5 +55,12 @@ public class Main {
             System.out.println("Valor com desconto: " + livro1.retornaValor());
         }
 
+
+        Ebook ebook = new Ebook(autor);
+        ebook.setTitulo("Ebook 1");
+        ebook.mostrarDados();
+        System.out.println(ebook.aplicaDescontoDe(0.15));
+        // Sempre a JVM busca o método primeiro na classe instanciada, caso não encontre,
+        // vai procurar na superclasse.
     }
 }

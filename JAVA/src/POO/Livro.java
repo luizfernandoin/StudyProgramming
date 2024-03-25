@@ -14,7 +14,8 @@ public class Livro {
 
     O encapsulamento deixa nosso código muito mais passivel a mudanças
      */
-    private double valor;
+    protected double valor; //visibilidade média entre public e private. Deixa visivel
+    // também para as classes filhas.
     Autor autor;
 
     /*
@@ -22,8 +23,17 @@ public class Livro {
     da classe e não tem retorno declarado.
 
     Obs: se você não criar o compilador resolvera esse problema automaticamente.
+
+    Uma classe pode ter mais de um construtor (overloaded), mas sem a mesma quantidade de
+    parametros.
     */
+    public Livro(Autor autor) {
+        this(); // encadeamento de construtores;
+        this.autor = autor;
+    }
+
     public Livro() {
+        this.isbn = "000-00-00000-00-0"; // forma de atribuir valor default a atributo.
         System.out.println("Novo livro criado!");
     }
 
