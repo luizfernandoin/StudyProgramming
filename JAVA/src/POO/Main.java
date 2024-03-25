@@ -19,14 +19,14 @@ public class Main {
         livro1.titulo = "Titulo1";
         livro1.descricao = "Descrição1";
         livro1.numPaginas = 1;
-        livro1.valor = 01.01;
+        livro1.adicionaValor(01.01);
         livro1.isbn = "1";
         livro1.autor = autor;
 
         livro2.titulo = "Titulo2";
         livro2.descricao = "Descrição2";
         livro2.numPaginas = 2;
-        livro2.valor = 02.02;
+        livro2.adicionaValor(02.02);
         livro2.isbn = "2";
         livro1.aplicaDescontoDe(0.1);
 
@@ -41,9 +41,19 @@ public class Main {
         } else {
             System.out.println("An? Por que diferentes?");
 
-            // Basicamente, quando utilizamos new, a variável armazena uma referência para
-            // o dado em mémoria. Diferentemente dos tipos primitivos, onde armazenam uma
-            // cópia dos dados.
+        // Basicamente, quando utilizamos new, a variável armazena uma referência para
+        // o dado em mémoria. Diferentemente dos tipos primitivos, onde armazenam uma
+        // cópia dos dados.
         }
+
+        if (!livro1.aplicaDescontoDe(0.3)) {
+            //livro1.valor -= livro1.valor * 0.4; -> com o encapsulamento, o atributo private
+            // está visivel apenas para a classe.
+            System.out.println("Não é possível aplicar desconto maior que 30%");
+            //System.out.println("Valor final: " + livro1.valor);
+        } else {
+            System.out.println("Valor com desconto: " + livro1.retornaValor());
+        }
+
     }
 }

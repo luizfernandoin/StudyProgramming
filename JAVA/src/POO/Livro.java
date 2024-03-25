@@ -5,7 +5,16 @@ public class Livro {
     String descricao;
     String isbn;
     int numPaginas;
-    double valor;
+    /*
+    Encapsulamento -> esconder todos os atributos de suas classes e esconder seus
+    comportamentos em métodos.
+
+    O QUE O CÓDIGO FAZ?
+    COMO É FEITO?
+
+    O encapsulamento deixa nosso código muito mais passivel a mudanças
+     */
+    private double valor;
     Autor autor;
 
     /*
@@ -43,6 +52,14 @@ public class Livro {
 
         this.valor -= this.valor * porcentagem;
         return true;
+    }
+
+    void adicionaValor(double valor) {
+        this.valor = valor;
+    }
+
+    double retornaValor() {
+        return this.valor;
     }
 
     boolean temAutor() {
