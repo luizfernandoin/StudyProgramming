@@ -1,10 +1,10 @@
 package POO;
 
 public class Livro {
-    String titulo;
-    String descricao;
-    String isbn;
-    int numPaginas;
+    private String titulo;
+    private String descricao;
+    private String isbn;
+    private int numPaginas;
     /*
     Encapsulamento -> esconder todos os atributos de suas classes e esconder seus
     comportamentos em métodos.
@@ -27,12 +27,55 @@ public class Livro {
         System.out.println("Novo livro criado!");
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
 
     /*
-    tipoDeRetorno nomeDoComportamento() {
-        //codigo que será executado.
-    }
-    */
+        tipoDeRetorno nomeDoComportamento() {
+            //codigo que será executado.
+        }
+        */
     void mostrarDados() {
         System.out.println("Título: " + titulo);
         System.out.println("Descrição: " + descricao);
@@ -54,12 +97,12 @@ public class Livro {
         return true;
     }
 
-    void adicionaValor(double valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-    double retornaValor() {
-        return this.valor;
+    public double retornaValor() {
+        return valor;
     }
 
     boolean temAutor() {
