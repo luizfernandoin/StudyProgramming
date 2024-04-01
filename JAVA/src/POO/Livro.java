@@ -1,6 +1,10 @@
 package POO;
 
-public class Livro {
+//Estou falando que essa classe não representa um objeto em sim, mas uma abstração que
+//contem todas as informações que outros devem herdar.
+
+// OBS: NÃO SERÁ POSSÍVEL INSTANCIAR LIVRO!
+public abstract class Livro {
     private String titulo;
     private String descricao;
     private String isbn;
@@ -98,14 +102,12 @@ public class Livro {
         }
     }
 
-    public boolean aplicaDescontoDe(double porcentagem) {
-        if (porcentagem > 0.3) {
-            return false;
-        }
+//    public boolean aplicaDescontoDe(double porcentagem) {
+//        return false;
+//    }
 
-        this.valor -= this.valor * porcentagem;
-        return true;
-    }
+    public abstract boolean aplicaDescontoDe(double porcentagem);
+    //Todos os métodos abstratos devem ser reescritos pelas subclasses.
 
     public void setValor(double valor) {
         this.valor = valor;
