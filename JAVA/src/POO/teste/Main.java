@@ -1,4 +1,9 @@
-package POO;
+package POO.teste;
+
+import POO.livraria.Autor;
+import POO.produtos.Ebook;
+import POO.produtos.Livro;
+import POO.produtos.MiniLivro;
 
 public class Main {
     public static void main(String[] args) {
@@ -58,7 +63,7 @@ public class Main {
 
         Ebook ebook = new Ebook(autor);
         ebook.setTitulo("Ebook 1");
-        ebook.mostrarDados();
+        //ebook.mostrarDados();
         System.out.println(ebook.aplicaDescontoDe(0.15));
         // Sempre a JVM busca o método primeiro na classe instanciada, caso não encontre,
         // vai procurar na superclasse.
@@ -66,11 +71,11 @@ public class Main {
         Livro livro = new MiniLivro(autor);
         livro.setValor(39.90);
 
-        if (!livro.aplicaDescontoDe(0.3)) {
-            System.out.println("Desconto no livro não pode ser maior que 30%");
-        } else {
-            System.out.println("Valor do livro com desconto: " + livro.getValor());
-        }
+//        if (!livro.aplicaDescontoDe(0.3)) {
+//            System.out.println("Desconto no livro não pode ser maior que 30%");
+//        } else {
+//            System.out.println("Valor do livro com desconto: " + livro.getValor());
+//        }
 
     }
 }

@@ -1,6 +1,8 @@
-package POO;
+package POO.produtos;
 
-public class LivroFisico extends Livro {
+import POO.livraria.Autor;
+
+public class LivroFisico extends Livro implements Promocional {
     public LivroFisico(Autor autor) {
         super(autor);
     }

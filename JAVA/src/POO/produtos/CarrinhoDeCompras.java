@@ -1,10 +1,13 @@
-package POO;
+package POO.produtos;
 
-import java.sql.Struct;
+import POO.produtos.Livro;
+import POO.produtos.Produto;
+
 import java.util.ArrayList;
 
 public class CarrinhoDeCompras {
     ArrayList<Livro> livros = new ArrayList<>();
+    private double total;
 
     /*
     ArrayList<LivroFisico> livrosFisicos = new ArrayList<>();
@@ -23,17 +26,12 @@ public class CarrinhoDeCompras {
     // Para evitar a repetição de métodos para cada novo tipo de livro, podemos utilizar
     // polimorfismo:
 
-    public void adiciona(Livro livro) {
-        livros.add(livro);
-        System.out.printf("Livro \"%s\" adicionado com sucesso!\n", livro.getTitulo());
+    public void adiciona(Produto produto) {
+        System.out.println("Adicionando: " + produto);
+        total += produto.getValor();
     }
 
-    public double valorTotalCompras() {
-        double totalCompras = 0;
-        for (int c = 0; c < livros.size(); c++) {
-            totalCompras += livros.get(c).getValor();
-        }
-
-        return totalCompras;
+    public double getTotal() {
+        return total;
     }
 }

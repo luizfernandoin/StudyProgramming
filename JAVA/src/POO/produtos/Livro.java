@@ -1,10 +1,15 @@
-package POO;
+package POO.produtos;
 
 //Estou falando que essa classe não representa um objeto em sim, mas uma abstração que
 //contem todas as informações que outros devem herdar.
 
+import POO.livraria.Autor;
+import POO.produtos.Produto;
+
 // OBS: NÃO SERÁ POSSÍVEL INSTANCIAR LIVRO!
-public abstract class Livro {
+public abstract class Livro implements Produto {
+    // -> implements assina o contrato da classe com o produto, ou seja, a interface livro
+    // idealiza um produto.
     private String titulo;
     private String descricao;
     private String isbn;
@@ -106,7 +111,7 @@ public abstract class Livro {
 //        return false;
 //    }
 
-    public abstract boolean aplicaDescontoDe(double porcentagem);
+    //public abstract boolean aplicaDescontoDe(double porcentagem);
     //Todos os métodos abstratos devem ser reescritos pelas subclasses.
 
     public void setValor(double valor) {

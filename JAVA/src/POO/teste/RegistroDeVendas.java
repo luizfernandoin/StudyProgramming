@@ -1,4 +1,9 @@
-package POO;
+package POO.teste;
+
+import POO.produtos.CarrinhoDeCompras;
+import POO.livraria.Autor;
+import POO.produtos.Ebook;
+import POO.produtos.LivroFisico;
 
 public class RegistroDeVendas {
     public static void main(String[] args) {
@@ -11,6 +16,10 @@ public class RegistroDeVendas {
         livroFisico.setTitulo("Livro Físico");
         livroFisico.setValor(100);
 
+        if (livroFisico.aplicaDescontoDe10Porcento()) {
+            System.out.println("Valor agora é " + livroFisico.getValor());
+        }
+
         Ebook ebook = new Ebook(autor);
         ebook.setTitulo("Ebook");
         ebook.setValor(14);
@@ -19,6 +28,6 @@ public class RegistroDeVendas {
         carrinho.adiciona(livroFisico);
         carrinho.adiciona(ebook);
 
-        System.out.println(carrinho.valorTotalCompras());
+        System.out.println(carrinho.getTotal());
     }
 }

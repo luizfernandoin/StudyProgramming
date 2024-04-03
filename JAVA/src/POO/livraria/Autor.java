@@ -1,4 +1,4 @@
-package POO;
+package POO.livraria;
 
 public class Autor {
     private String nome;
@@ -29,11 +29,11 @@ public class Autor {
         this.cpf = cpf;
     }
 
-    void mostrarDados() {
+    public void mostrarDados() {
         System.out.println("Informações do Autor:");
-        System.out.println("Nome: " + nome);
-        System.out.println("Email: " + email);
-        System.out.println("CPF: " + cpf);
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("CPF: " + getCpf());
         System.out.println("--");
     }
 }

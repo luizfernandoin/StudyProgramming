@@ -1,8 +1,10 @@
-package POO;
+package POO.produtos;
+
+import POO.livraria.Autor;
 
 //Basicamente estou indicando ao compilador que a classe Ebook é derivada de Livro, é um tipo
 // de livro, possui tudo que livro tem, mas com estados e comportamentos próprios.
-public class Ebook extends Livro {
+public class Ebook extends Livro implements Promocional {
     private String waterMark;
 
     public Ebook(Autor autor) {
