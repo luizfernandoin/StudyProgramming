@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class CarrinhoDeCompras {
     ArrayList<Livro> livros = new ArrayList<>();
     private double total;
+    private Produto[] produtos = new Produto[10];
+    private int contador = 0;
 
     /*
     ArrayList<LivroFisico> livrosFisicos = new ArrayList<>();
@@ -28,10 +30,29 @@ public class CarrinhoDeCompras {
 
     public void adiciona(Produto produto) {
         System.out.println("Adicionando: " + produto);
+        if (!carrinhoEstaCheio()) {
+            this.produtos[this.contador] = produto;
+        }
+
         total += produto.getValor();
+        setContador();
+    }
+
+    private boolean carrinhoEstaCheio() {
+        if (contador > 9) return true;
+
+        return false;
+    }
+
+    public Produto[] getProdutos() {
+        return produtos;
     }
 
     public double getTotal() {
         return total;
+    }
+
+    public void setContador() {
+        this.contador++;
     }
 }
