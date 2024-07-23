@@ -1,0 +1,11 @@
+int* d, int * d ou int *d;
+&d -> pega o endereço desse ponteiro.
+d -> pega o valor (endereço de memoria) do tipo int.
+*d -> pega o valor do tipo que ele esta apontando.
+
+//Basicamente, um apontador é uma variavel que armazena outra variavel.
+
+//Nodo é uma convenção para especificar os registros de estruturas de dados.
+
+//malloc -> pedir mais memoria ao processador.
+//sizeof(Pilha) -> o total de memoria deve ser suficiente para armazenar uma Pilha.
