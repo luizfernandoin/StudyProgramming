@@ -50,7 +50,6 @@ export const useFetch = (url) => {
                 const data = await res.json();
                 setData(data);
             } catch (error) {
-                console.log(error.message);
                 setError("Houve algum erro ao carregar os dados.");
             }
 
@@ -80,7 +79,7 @@ export const useFetch = (url) => {
         };
 
         httpRequest();
-    }, [config, method, url])
+    }, [config, method, url, productId])
 
     return { data, httpConfig, loading, error };
 }
