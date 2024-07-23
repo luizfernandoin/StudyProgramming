@@ -1,0 +1,1 @@
+cada nodo guarda o proximo
