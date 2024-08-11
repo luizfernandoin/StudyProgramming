@@ -1,54 +1,42 @@
 package PROJETOS.Banco;
 
-public abstract class Usuario {
-    String nome;
-    int idade;
-    String conta;
-    String agencia;
-    int password;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    public Usuario(String nome, int idade, String conta, String agencia, int password) {
+public class Usuario {
+    private String nome;
+    private String cpf;
+    private Date dataDeNascimento;
+    private int password;
+
+    public Usuario(String nome, String cpf, Date dataDeNascimento) {
         this.nome = nome;
-        this.idade = idade;
-        this.conta = conta;
-        this.agencia = agencia;
-        this.password = password;
-    }
-
-    public void login() {
-
-    }
-
-    public String getNome() {
-        return nome;
+        this.cpf = cpf;
+        this.dataDeNascimento = dataDeNascimento;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public int getIdade() {
-        return idade;
+    public String getNome() {
+        return nome;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getConta() {
-        return conta;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setConta(String conta) {
-        this.conta = conta;
+    public void setDataDeNascimento(Date dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 
-    public String getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
+    public Date getDataDeNascimento() {
+        return dataDeNascimento;
     }
 
     public int getPassword() {
@@ -57,5 +45,15 @@ public abstract class Usuario {
 
     public void setPassword(int password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", dataNascimento=" + sdf.format(dataDeNascimento) +
+                '}';
     }
 }
