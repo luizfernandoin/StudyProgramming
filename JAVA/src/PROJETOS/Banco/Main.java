@@ -24,7 +24,6 @@ public class Main {
         Banco b1 = new Banco();
         Scanner scanner = new Scanner(System.in);
 
-
         int acao;
         do {
             acao = Inteface.menu("criar conta", "entrar na conta", "buscar conta", "excluir conta", "listar contas", "listar usuários", "sair");
