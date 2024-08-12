@@ -55,7 +55,7 @@ public class Banco {
         } while (!dataNascimento.isPresent());
 
 
-        return new Usuario(nome, cpf, dataNascimento.get());
+        return new Usuario(nome, cpf, dataNascimento.get(), password);
     }
 
     public Conta criarConta() {
@@ -101,12 +101,15 @@ public class Banco {
     Conta buscarConta(String numeroConta, String numeroAgencia) {
         for (Conta conta : contas) {
             if (conta.getConta().equals(numeroConta) && conta.getAgencia().equals(numeroAgencia)) {
-                System.out.println(conta);
                 return conta;
             }
         }
 
         return null;
+    }
+
+    public void imprimirConta(Conta conta) {
+        System.out.println(conta);
     }
 
     Conta buscarConta(String cpf) {
@@ -125,6 +128,7 @@ public class Banco {
         int password = nextPassword();
 
         Conta conta = buscarConta(numeroConta, numeroAgencia);
+
         if (conta == null) {
             return null;
         }

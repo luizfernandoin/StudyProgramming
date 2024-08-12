@@ -9,10 +9,11 @@ public class Usuario {
     private Date dataDeNascimento;
     private int password;
 
-    public Usuario(String nome, String cpf, Date dataDeNascimento) {
+    public Usuario(String nome, String cpf, Date dataDeNascimento, int password) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
+        this.password = password;
     }
 
     public void setNome(String nome) {
@@ -54,6 +55,7 @@ public class Usuario {
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", dataNascimento=" + sdf.format(dataDeNascimento) +
+                ", password=" + password +
                 '}';
     }
 }
