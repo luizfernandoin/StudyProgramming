@@ -1,18 +1,19 @@
 package PROJETOS.Banco;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Banco {
     ArrayList<Conta> contas;
-    ArrayList<Usuario> usuarios = new ArrayList<>();
+    ArrayList<Usuario> usuarios;
     private final AtomicInteger numeroAgencia;
+    private Scanner scanner;
 
     public Banco() {
-        contas = new ArrayList<>();
+        this.contas = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
         this.numeroAgencia = new AtomicInteger(1);
+        this.scanner = new Scanner(System.in);
     }
 
     public int gerarNumeroIntervalo(int min, int max) {
@@ -37,20 +38,11 @@ public class Banco {
     }
 
     public Usuario criarUsuario() {
-        Scanner scanner = new Scanner(System.in);
         DataUtils dataUtils = new DataUtils();
 
-
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
-
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
-
-        System.out.print("Password: ");
-        int password = scanner.nextInt();
-        scanner.nextLine();
-
+        String nome = nextNome();
+        String cpf = nextCPF();
+        int password = nextPassword();
         Optional<Date> dataNascimento;
 
         do {
@@ -67,14 +59,13 @@ public class Banco {
     }
 
     public Conta criarConta() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("[1] Poupança\n[2] Corrente");
 
         int tipoDeConta;
         do {
             System.out.print("Digite o tipo de conta: ");
             tipoDeConta = scanner.nextInt();
+            scanner.nextLine();
         }
         while (tipoDeConta != 1 && tipoDeConta != 2);
 
@@ -101,9 +92,16 @@ public class Banco {
         }
     }
 
+    void listarUsuarios() {
+        for (Usuario user : usuarios) {
+            System.out.println(user);
+        }
+    }
+
     Conta buscarConta(String numeroConta, String numeroAgencia) {
         for (Conta conta : contas) {
             if (conta.getConta().equals(numeroConta) && conta.getAgencia().equals(numeroAgencia)) {
+                System.out.println(conta);
                 return conta;
             }
         }
@@ -122,18 +120,14 @@ public class Banco {
     }
 
     public Conta autenticar() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Agência: ");
-        String numeroAgencia = scanner.nextLine();
-
-        System.out.println("Conta: ");
-        String numeroConta = scanner.nextLine();
-
-        System.out.println("Password: ");
-        int password = scanner.nextInt();
+        String numeroAgencia = nextAgencia();
+        String numeroConta = nextConta();
+        int password = nextPassword();
 
         Conta conta = buscarConta(numeroConta, numeroAgencia);
+        if (conta == null) {
+            return null;
+        }
 
         if (conta.getUsuario().getPassword() == password) {
             return conta;
@@ -142,12 +136,47 @@ public class Banco {
         }
     }
 
-
     void removerConta() {
         Conta estaAutenticado = autenticar();
 
         if (estaAutenticado != null) {
             contas.remove(estaAutenticado);
         }
+    }
+
+    public String nextNome() {
+        System.out.print("Informe seu nome: ");
+        String nome = scanner.nextLine();
+
+        return nome;
+    }
+
+    public String nextConta() {
+        System.out.print("Informe o Número da Conta: ");
+        String numeroConta = scanner.nextLine();
+
+        return numeroConta;
+    }
+
+    public String nextAgencia() {
+        System.out.print("Informe o Número da Agência: ");
+        String numeroAgencia = scanner.nextLine();
+
+        return numeroAgencia;
+    }
+
+    public String nextCPF() {
+        System.out.print("Informe o CPF: ");
+        String cpf = scanner.nextLine();
+
+        return cpf;
+    }
+
+    public int nextPassword() {
+        System.out.print("Informe o Password: ");
+        int password = scanner.nextInt();
+        scanner.nextLine();
+
+        return password;
     }
 }

@@ -1,7 +1,6 @@
-package Colecoes.exercicios;
+package Collections.exercicios;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class MegaSena {

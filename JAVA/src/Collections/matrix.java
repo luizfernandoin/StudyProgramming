@@ -1,4 +1,4 @@
-package Colecoes;
+package Collections;
 
 public class matrix {
 
