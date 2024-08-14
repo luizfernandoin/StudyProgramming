@@ -13,9 +13,23 @@ class Node<T> {
 
 public class LinkedList<T> {
     private Node<T> head;
+    private Node<T> tail;
 
     public LinkedList() {
         this.head = null;
+        this.tail = this.head;
+    }
+
+    public int lenLinkedList() {
+        Node<T> current = head;
+        int totNode = 0;
+
+        while (current != null) {
+            current = current.next;
+            totNode++;
+        }
+
+        return totNode;
     }
 
     public void addLast(T data) {
@@ -30,18 +44,30 @@ public class LinkedList<T> {
             }
 
             current.next = newNode;
+            this.tail = newNode;
         }
     }
 
     public void add(int index, T data) {
-        Node<T> current = current = head;
+        if (index == lenLinkedList()) {
+            addLast(data);
+            return;
+        }
+
+
+        Node<T> current = head;
         Node<T> newNode = new Node<>(data);
 
-        for (int i = 0; i < index; i++) {
+        for (int i = 1; i < index; i++) {
+            if (i == 1) {
+                current = head;
+                continue;
+            }
+
             current = current.next;
         }
 
-        newNode = current.next;
+        newNode.next = current.next;
         current.next = newNode;
     }
 
@@ -57,6 +83,23 @@ public class LinkedList<T> {
         head = newNodo;
     }
 
+    public Node<T> removeLast() {
+        Node<T> current = head;
+        while (current.next != getTail()) {
+            current = current.next;
+        }
+        current.next = null;
+
+        return getTail();
+    }
+
+    public Node<T> removeFirst() {
+        Node<T> current = this.head;
+        this.head = this.head.next;
+
+        return current;
+    }
+
     public void printLinkedList() {
         Node<T> current = head;
         while (current != null) {
@@ -64,6 +107,10 @@ public class LinkedList<T> {
             current = current.next;
         }
         System.out.println("null");
+    }
+
+    public Node<T> getTail() {
+        return this.tail;
     }
 }
 
@@ -76,8 +123,13 @@ class Main {
         list.addFirst(5);
         list.addLast(3);
         list.addFirst(4);
-        list.add(2, 5);
+        list.printLinkedList();
 
+        list.add(5, 10);
+        list.printLinkedList();
+
+        System.out.println(list.removeLast().data);
+        System.out.println(list.removeFirst().data);
         list.printLinkedList();
     }
 }
