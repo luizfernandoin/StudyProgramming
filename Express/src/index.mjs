@@ -1,25 +1,27 @@
-import express, { response } from 'express';
+import express from 'express';
+
+import { users } from './utils/constants.mjs';
+import routes from './routes/index.mjs';
 
 const app = express();
+
+/* Middleware
+Basicamente é uma função que será executada antes do response para o cliente.
+
+Quando fazemos um request o middleware intercepta para realizar alguma função antes de passar o controle para outro middleware ou rota;
+*/
+app.use(express.json())
+app.use(routes);
+
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log('Iniciando servidor na porta ' + PORT)
 });
 
-const users = [
-    {id: 1, username: 'luizfernandoin', idade: 20},
-    {id: 2, username: 'marie', idade: 22},
-    {id: 3, username: 'antoe', idade: 19}
-];
-
 
 app.get('/', (requests, response) => {
-    response.send('Hello');
-})
-
-app.get('/api/users/:id', (request, response) => {
-    const user = users.find(user => user.id === parseInt(request.params.id));
-
-    user ? response.send(user) : response.status(400).send('Bad Request');
-})
+    response.cookie("Hello", "World", { maxAge: 60000 })
+    response.status(201).send({ msg: "Hello" });
+});
